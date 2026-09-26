@@ -1,5 +1,8 @@
-package com.javinha.CadastroDeFilmes;
+package com.javinha.CadastroDeFilmes.movies;
+import com.javinha.CadastroDeFilmes.genres.GenreModel;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 //Entity: Transforma uma classe em uma entidade do Banco;
 //JPA = Java Persistance API;
@@ -12,6 +15,15 @@ public class MovieModel {
     private String title;
     private int year;
     private String synopsis;
+
+    //ManyToMany: Relação muitos para muitos = N:N
+    @ManyToMany
+    //JoinTable: cria uma tabela intermediaria automaticamente, nesse caso chamada movie_genres
+    //joinColumns aponta para a entidade atual (Movie)
+    //@JoinColumn representa o nome da coluna da entidade atual na tebale intermediaria
+    //inverseJoinColumns mesmo que joinColumns, mas na entidade dos generos
+    @JoinTable(name = "movie_genres", joinColumns = @JoinColumn(name = "movie_id"), inverseJoinColumns = @JoinColumn(name = "genre_id"))
+    private List<GenreModel> genres;
 
     public MovieModel() {
     }

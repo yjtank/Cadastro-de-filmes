@@ -1,4 +1,4 @@
-package com.javinha.CadastroDeFilmes;
+package com.javinha.CadastroDeFilmes.movies;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
